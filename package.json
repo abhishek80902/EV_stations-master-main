@@ -1,0 +1,26 @@
+{
+  "name": "final",
+  "version": "1.0.0",
+  "description": "ev charger",
+  "main": "index.html",
+  "url": "https://github.com/tanmai22/EV-charging-station-locater.git",
+  "scripts": {
+    "start": "http-server",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "author": "riya",
+  "license": "ISC",
+  "dependencies": {
+    "@tomtom-international/web-sdk-maps": "^6.20.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "http-server": "^0.11.1",
+    "nodemailer": "^6.10.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
+  }
+}

@@ -1,0 +1,747 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>VoltSeekers</title>
+    <link rel="shortcut icon" href="./images/fevicon.png" type="image/x-icon">
+    <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .bg-image {
+            /* The image used */
+            margin-bottom: 5%;
+            width: 75%;
+            margin-left: 20%;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        h2 {
+            margin-bottom: 5%;
+            margin-top: 5%;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .signUp {
+            background-color: #007bff;
+            color: aliceblue;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .signUp:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .login {
+            background-color: #1abcce;
+            color: aliceblue;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login:hover {
+            background-color: #0f9787;
+            transform: scale(1.1);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .user {
+            height: 45px;
+            width: 42px;
+            object-fit: fill;
+            background-color: #1abcce;
+        }
+        
+        .dropbtn {
+            background-color: antiquewhite;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .dropbtn i {
+            font-size: 20px;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: antiquewhite;
+            min-width: 150px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .container1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        .mainimg {
+            max-width: 90%;
+        }
+        
+        .footer {
+            background: #343a40;
+            padding: 30px 0px;
+            font-family: 'Play', sans-serif;
+            text-align: center;
+            margin-top: 3%;
+        }
+        
+        .footer .row {
+            width: 100%;
+            margin: 1% 0%;
+            padding: 0.6% 0%;
+            color: gray;
+            font-size: 0.8em;
+        }
+        
+        .footer .row a {
+            text-decoration: none;
+            color: gray;
+            transition: 0.5s;
+        }
+        
+        .footer .row a:hover {
+            color: #fff;
+        }
+        
+        .footer .row ul {
+            width: 100%;
+        }
+        
+        .footer .row ul li {
+            display: inline-block;
+            margin: 0px 30px;
+        }
+        
+        .footer .row a i {
+            font-size: 2em;
+            margin: 0% 1%;
+        }
+        
+        .image {
+            margin: 2em;
+        }
+        
+        @media (max-width:720px) {
+            .footer {
+                text-align: left;
+                padding: 5%;
+            }
+            .footer .row ul li {
+                display: block;
+                margin: 10px 0px;
+                text-align: left;
+            }
+            .footer .row a i {
+                margin: 0% 3%;
+            }
+        }
+        
+        .container2 {
+            text-align: center;
+        }
+        
+        .portsimg {
+            width: 100%;
+        }
+        
+        .container1 {
+            margin-top: 2em;
+        }
+        /*.image {
+    flex-basis:70%;
+    order: 2;
+  }*/
+        
+        .text {
+            color: rgb(61, 59, 59);
+        }
+        
+        @media screen and (max-width: 1200px) {
+            .text {
+                font-size: 15px;
+            }
+            .image {
+                width: 80%;
+                padding: 4px 4px 4px 4px;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .bg-image {
+                width: 60%;
+            }
+            .text {
+                font-size: 10px;
+            }
+            .image {
+                width: 50%;
+                padding-bottom: 10px;
+            }
+            .container1 {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .text {
+                font-size: 8px;
+            }
+            .image {
+                width: 30%;
+                padding-bottom: 8px;
+            }
+            .container1 {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        
+        .find {
+            border-radius: 60%;
+            width: 70%;
+        }
+        
+        .navbar {
+            width: 100%;
+            padding-left: 5%;
+            padding-right: 5%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: 6A98B9;
+        }
+        
+        .logo {
+            width: 60px;
+            margin-top: 50px;
+            padding-left: 40px;
+            cursor: pointer;
+        }
+        
+        nav {
+            flex: 1;
+            padding-left: 60px;
+        }
+        
+        nav ul li {
+            display: inline;
+            list-style: none;
+            margin: 0px 20px;
+        }
+        
+        nav ul li a {
+            font-style: inter;
+            text-decoration: none;
+            color: white;
+            align-items: flex-end;
+        }
+        
+        nav ul li a:hover {
+            color: F8BEB8;
+        }
+        
+        .content {
+            font-size: 16px;
+            width: 60%;
+            height: 150px;
+            float: right;
+        }
+        
+        .aboutimg {
+            padding: 10px;
+            float: left;
+            width: 80%;
+            padding-bottom: 8px;
+            margin: 2em;
+        }
+        
+        .topHeading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: xx-large;
+            color: goldenrod;
+        }
+        /* Reset and Fonts */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: background 0.4s, color 0.4s;
+        }
+        
+        .light {
+            background-color: #f4f4f4;
+            color: #222;
+        }
+        
+        .dark {
+            background-color: #111;
+            color: #f4f4f4;
+        }
+        /* Hero Section */
+        
+        .hero {
+            position: relative;
+            height: 100vh;
+            /* margin-top: 1px; */
+            background-image: url('https://www.evmechanica.com/wp-content/uploads/2024/10/TOP-10-Leading-EV-Charging-Station-Companies-in-India.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+            max-width: 700px;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            color: #1db954;
+        }
+        
+        .hero-text {
+            color: whitesmoke;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .hero-buttons {
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 30px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn.primary {
+            background-color: #1db954;
+            color: white;
+        }
+        
+        .btn.secondary {
+            background-color: transparent;
+            border: 2px solid #1db954;
+            color: #1db954;
+            transition: all ease-in;
+            scroll-behavior: smooth;
+        }
+        
+        .btn.primary:hover {
+            background-color: #17a34a;
+        }
+        
+        .btn.secondary:hover {
+            background-color: #1db954;
+            color: white;
+        }
+        
+        #our_services {
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+        }
+        
+        <!--contact-->.contact-section {
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .contact-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-container h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #00796b;
+        }
+        
+        .contact-container p {
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+        
+        .contact-container input,
+        .contact-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        
+        .contact-container button {
+            padding: 12px 25px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .contact-container button:hover {
+            background-color: #004d40;
+        }
+        
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        
+        @keyframes fadein {
+            from {
+                bottom: 10px;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 10px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="http://127.0.0.1:5500/index.html" target="_blank">
+                    <div>VoltSeekers</div>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav mx-auto">
+                        <a class="nav-item nav-link active" href="#services">Services</a>
+                        <a class="nav-item nav-link" href="#stations">Stations</a>
+                        <a class="nav-item nav-link" href="#ports">AvailablePorts</a>
+                        <a class="nav-item nav-link " href="#about">About </a>
+                        <a class="nav-item nav-link" href="#footer">Contact-us</a>
+                    </div>
+
+                    <div class="buttons">
+                        <a href="ev_signUp.html"><button class="signUp">Sign Up</button></a>
+                        <a href="ev_login.html"><button class="login">Login</button></a>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+                <div>
+        </nav>
+        <div>
+            </nav>
+
+
+
+            <section class="hero">
+                <div class="overlay"></div>
+                <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
+                    <h1 class="hero-title" data-aos="fade-right" data-aos-delay="200">VoltSeekers</h1>
+                    <p class="hero-text" data-aos="fade-up" data-aos-delay="400">
+                        Drive electric, charge smart. Discover nearby EV stations, check traffic, and find the smoothest routes — all in one platform.
+                    </p>
+                    <div class="hero-buttons" data-aos="zoom-in" data-aos-delay="600">
+                        <a href="ev_signUp.html"><button class="btn primary">Get Started</button></a>
+                        <a href="#stations"><button class="btn secondary">Learn More</button></a>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+            <!-- our services -->
+            <div class="container">
+                <div id="our_services">
+                    <div class="container marketing">
+                        <h2 class="container2" id="services">OUR SERVICES</h2>
+                        <!-- Three columns of text below the carousel -->
+                        <div class="row">
+                            <!-- /.col-lg-4 -->
+                            <div class="col-lg-4">
+                                <svg class="bd-placeholder-img rounded-circle" width="25" height="155" xmlns="http://www.w3.org/2000/svg" src="logo.png" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"></svg>
+                                <img src="images/circle1.jpg">
+                                <h4><strong>Search stations</strong></h4>
+                                <p class="text">You can now search nearby charging stations from your current locations and can also see how many charging slots are available at that place.</p>
+                                <p><a class="btn btn-info" href="ev_search.html">Search Stations</a></p>
+                            </div>
+                            <!-- /.col-lg-4 -->
+                            <div class="col-lg-4">
+                                <svg class="bd-placeholder-img rounded-circle" width="25" height="155" xmlns="http://www.w3.org/2000/svg" src="logo.png" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"></svg>
+                                <img class="find" src="images/route1.jpg">
+                                <h4><strong>Finding route</strong></h4>
+                                <p class="text">You can now search your destination path in the most simplest way from your current locations .This feature enables you to find the route on your finger tips.</p>
+                                <p><a class="btn btn-info" href="ev_routing.html">Find Route</a></p>
+                            </div>
+                            <div class="col-lg-4">
+                                <svg class="bd-placeholder-img rounded-circle" width="25" height="100" xmlns="http://www.w3.org/2000/svg" src="logo.png" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"></svg>
+                                <img src="images/circle3.jpg">
+
+                                <h4><strong>Traffic detector</strong></h4>
+                                <p class="text">Get the taffic detection on your way to the destination.You can get information about the traffic status here. Enjoy ride! Travel safe!
+                                </p>
+                                <p><a class="btn btn-info" href="traffic.html">Detect Traffic</a></p>
+                            </div>
+                            <!-- /.col-lg-4 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- our stations -->
+            <div class="container">
+                <div id="our_stations">
+                    <h2 class="container2" id="stations">OUR STATIONS</h2>
+                    <div class="container1">
+                        <div class="text">
+                            <p><b>1. Power :</b> Low-carbon energy sources such as wind farms and photovoltaic (PV) systems turn energy from wind or light into the electricity needed to meet the needs of commercial, industrial and residential customers.
+                            </p>
+                            <p>
+                                <b>2. Business, Retail and Fleet Charging :</b> Charging whilst parked at work or during leisure activities is a convenient way to recharge.
+                            </p>
+                            <p>
+                                <b>3.Charging On-the-Go :</b> On forecourts electric fast charging services are developed for drivers who need to recharge their vehicle during their journeys.
+                            </p>
+                            <p><b>4. Home charging :</b> Charging at home is often the most convenient and cost effective way for private customers to recharge their cars, as it is where most cars are parked overnight.</p>
+                        </div>
+                        <div class="image">
+                            <img src="images/first.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ports available -->
+
+            <div class="container">
+                <div id="charging_ports">
+                    <h2 class="container2" id="ports">Available Charging Ports</h2>
+                    <div class="container1">
+                        <div class="image">
+                            <img src="images/Stations available.png">
+                        </div>
+                        <div class="text">
+                            <p>Level 1 chargers : They are easy to find and use, inexpensive, and reliable. For a single-family home, a Level 1 charger may meet drivers’ needs. Level 1 chargers charge at a rate of 4-5 miles per hour. They work best if a
+                                driver is able to plug in and let the vehicle charge overnight on a regular basis.</p>
+                            <p>Since Level 1 chargers are of limited use for those who use their cars often or in apartment buildings, many consumers want a Level 2 charger, which can charge at a rate of 20-65 miles per hour. The plugs for Level 2 chargers
+                                are different from plugs for Level 1 chargers and require different cords and equipment than what comes with your new car.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- about us -->
+            <div class="container">
+                <div id="about_us">
+                    <h2 class="container2" id="about">ABOUT US</h2>
+                    <div class="container1">
+                        <div class="image">
+                            <img src="images/about.gif">
+                        </div>
+                        <div class="text">
+                            <p>An EV charging station is a device that allows drivers to charge up their electric cars while they’re parked at home or work. The station has two main components: A power source and a connector. The power source converts electricity
+                                into DC current, which is then converted into AC current using inverters..
+                            </p>
+                            <p>You can search for the nearest charging station from our maps api page and can use it to get navigate it to the place.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Contact us-->
+            <section id="contact" class="contact-section">
+                <div class="contact-container">
+                    <h2>Contact Us</h2>
+                    <p>Have questions, feedback, or suggestions? We'd love to hear from you!</p>
+                    <form id="contactForm">
+                        <input type="text" id="name" placeholder="Your Name" required />
+                        <input type="email" id="email" placeholder="Your Email" required />
+                        <textarea id="message" placeholder="Your Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                    <div id="toast" class="toast"></div>
+                </div>
+            </section>
+
+
+
+
+            <footer>
+                <div id="footer" class="footer" style="width:100% ;">
+                    <div class="row">
+                        <ul>
+                            <li><a href="#about">About us</a></li>
+                            <li><a href="#services">Our Services</a></li>
+                            <li><a href="#stations">Our Stations</a></li>
+                            <li><a href="#ports">Charging Ports</a></li>
+                            <li><a href="#">Logo</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+
+        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+        <script src="script.js"></script>
+        <script>
+            function showToast(message) {
+                const toast = document.getElementById("toast");
+                toast.textContent = message;
+                toast.className = "toast show";
+                setTimeout(() => {
+                    toast.className = toast.className.replace("show", "");
+                }, 3000);
+            }
+
+            document.getElementById("contactForm").addEventListener("submit", function(e) {
+                e.preventDefault();
+                showToast("Thank you! Your message has been received.");
+                this.reset();
+            });
+        </script>
+
+
+</body>
+
+</html>
