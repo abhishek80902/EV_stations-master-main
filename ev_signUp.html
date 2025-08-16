@@ -1,145 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.36.1/maps/maps.css">
-
     <style>
         /* Modal Styling */
-        
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.455);
+            background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Flogin-background-image&psig=AOvVaw3Ox6ULBHC477kXW_G-iuLv&ust=1755098604905000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNCirOPJhY8DFQAAAAAdAAAAABAE);
+            display: flex; align-items: center; justify-content: center;
         }
-        /* Form Box */
-        
         .modal-content {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            width: 350px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            animation: fadeIn 0.3s ease-in-out;
+            background: #fff; padding: 20px;
+            border-radius: 10px; width: 400px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            text-align: center; animation: fadeIn 0.3s ease-in-out;
         }
-        /* Heading */
-        
-        .modal-content h2 {
+        h2 {
             font-family: 'Poppins', sans-serif;
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 10px;
+            color: #646161; font-size: 24px; margin-bottom: 10px;
         }
-        /* Input Fields */
-        
-        input,
-        select {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
+        input, select {
+            width: 90%; padding: 10px;
+            margin: 10px 0; border: 1px solid #ccc;
+            border-radius: 5px; font-size: 16px;
         }
-        /* Buttons */
-        
-        .register-btn {
-            background: #007bff;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
+        .register-btn, .otp-btn {
+            background: #007bff; color: white;
+            padding: 10px 15px; border: none;
+            margin-bottom: 2rem;
+            border-radius: 5px; cursor: pointer;
+            font-size: 16px; transition: 0.3s;
         }
-        
-        .register-btn:hover {
+        .register-btn:hover, .otp-btn:hover {
             background: #0056b3;
         }
-        
         .close-btn {
-            background: #dc3545;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 5px;
+            background: #dc3545; color: white;
+            padding: 10px 15px; border: none;
+            border-radius: 5px; cursor: pointer;
+            font-size: 16px; margin-top: 5px;
             transition: 0.3s;
         }
-        
-        .close-btn:hover {
-            background: #b02a37;
-        }
-        /* Animation */
-        
+        .close-btn:hover { background: #b02a37; }
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
         .toast {
             visibility: hidden;
-            min-width: 250px;
-            margin-left: -125px;
-            background-color: #28a745;
-            color: white;
-            text-align: center;
-            border-radius: 8px;
-            padding: 16px;
-            position: fixed;
-            z-index: 1;
-            left: 50%;
-            bottom: 30px;
-            font-size: 17px;
-            opacity: 0;
+            min-width: 250px; margin-left: -125px;
+            background-color: #28a745; color: white;
+            text-align: center; border-radius: 8px;
+            padding: 16px; position: fixed;
+            z-index: 1; left: 50%; bottom: 30px;
+            font-size: 17px; opacity: 0;
             transition: opacity 0.5s ease, bottom 0.5s ease;
         }
-        
         .toast.show {
-            visibility: visible;
-            opacity: 1;
-            bottom: 50px;
+            visibility: visible; opacity: 1; bottom: 50px;
         }
     </style>
 </head>
-
 <body>
-
     <div id="signup-form" class="modal">
-        <form class="modal-content">
+        <form class="modal-content" id="signupForm">
             <h2>Sign Up</h2>
             <label for="name">Name:</label>
-            <input type="text" id="name" required>
-            <br> <br>
+            <input type="text" id="name"  placeholder="eg: Abhishek" required>
+
             <label for="email">Email:</label>
-            <input type="email" id="email" required>
-            <br>
-            <br>
+            <input type="email" id="email" placeholder="xyz@gmail.com" required>
+            <button type="button" class="otp-btn" onclick="sendOTP()">Send OTP</button>
+            <br/>
+
+            <label for="otp">Enter OTP:</label>
+            <input type="text" id="otp" placeholder="Enter OTP">
+            <button type="button" class="otp-btn" onclick="verifyOTP()">Verify OTP</button>
+            <br/>
+
             <label for="password">Password:</label>
             <input type="password" id="password" required>
-            <br>
-            <br>
+
             <label for="charge-level">Charging Level:</label>
             <select id="charge-level" required>
                 <option value="">Charging Level</option>
@@ -147,18 +94,21 @@
                 <option value="level-2">Level 2</option>
                 <option value="dc-fast">DC fast</option>
             </select>
-            <br> <br>
+
             <div class="buttons">
-                <button type="submit" class="register-btn" onclick="">Register</button>
-                <a href="ev_login.html"><button type="button" id="close-signup" class="close-btn">Close</button></a>
+                <button type="submit" class="register-btn">Register</button>
+                <a href="ev_login.html">
+                    <button type="button" id="close-signup" class="close-btn">Close</button>
+                </a>
             </div>
-
         </form>
-
     </div>
 
+    <!-- Toasts -->
     <div id="toast" class="toast">You registered successfully!</div>
+    <div id="otpToast" class="toast">OTP sent successfully!</div>
+    <div id="otpVerifyToast" class="toast">OTP verified successfully!</div>
+
     <script src="ev_signUp.js"></script>
 </body>
-
 </html>
