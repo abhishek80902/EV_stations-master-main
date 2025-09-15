@@ -1,5 +1,6 @@
+
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector(".modal-content").addEventListener("submit", async function (e) {
+    document.querySelector(".modal-content").addEventListener("submit", function (e) {
         e.preventDefault();
 
         const emailInput = document.getElementById("email");
@@ -18,35 +19,17 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        try {
-            const response = await fetch("http://localhost:3000/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ email, password })
-            });
+        // ✅ No backend: just redirect to homepage
+        const toast = document.getElementById("toast");
+        toast.textContent = "Login successful!";
+        toast.classList.add("show");
 
-            const data = await response.json();
+        setTimeout(() => {
+            toast.classList.remove("show");
+            window.location.href = "ev_search.html"; // redirect to home
+        }, 1500);
 
-            if (response.ok) {
-                // Success toast
-                const toast = document.getElementById("toast");
-                toast.textContent = "Login successful!";
-                toast.classList.add("show");
-
-                setTimeout(() => {
-                    toast.classList.remove("show");
-                    window.location.href = "ev_routing.html";
-                }, 2000);
-
-                e.target.reset();
-            } else {
-                alert(data.error || "Login failed");
-            }
-        } catch (error) {
-            console.error("Error:", error);
-            alert("Something went wrong. Please try again.");
-        }
+        e.target.reset();
     });
 });
+
