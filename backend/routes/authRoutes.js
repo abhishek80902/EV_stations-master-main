@@ -26,27 +26,40 @@ router.post('/signup', async (req, res) => {
 });
 
 // Login
-router.post('/login', async (req, res) => {
+try {
+    const response = await fetch("http://localhost:3000/auth/login", { // <-- Updated URL
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+    });
+
+    let data = {};
     try {
-        const { email, password } = req.body;
-
-        if (!email || !password) {
-            return res.status(400).json({ error: "Email and password required" });
-        }
-
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(404).json({ error: "User not found" });
-        }
-
-        if (user.password !== password) {
-            return res.status(400).json({ error: "Invalid password" });
-        }
-
-        res.json({ message: "Login successful" });
+        data = await response.json(); // Try parsing JSON safely
     } catch (err) {
-        res.status(500).json({ error: "Server error" });
+        console.warn("Non-JSON response from server:", err);
     }
-});
+
+    if (response.ok) {
+        const toast = document.getElementById("toast");
+        toast.textContent = "Login successful!";
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+            window.location.href = "ev_routing.html";
+        }, 2000);
+
+        e.target.reset();
+    } else {
+        alert(data.error || "Login failed");
+    }
+} catch (error) {
+    console.error("Error:", error);
+    alert("Something went wrong. Please try again.");
+}
+
 
 module.exports = router;

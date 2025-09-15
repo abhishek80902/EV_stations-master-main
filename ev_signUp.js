@@ -35,7 +35,7 @@ let otpVerified = false;
         });
 
         document.getElementById("close-signup").addEventListener('click', () => {
-            window.location.href = "ev_login.html";
+            window.location.href = "/";
         });
 
         function sendOTP() {
