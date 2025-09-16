@@ -22,3 +22,14 @@ It helps users find nearby EV charging stations on an interactive map.
 Frontend: HTML, CSS, JavaScript
 
 Maps & Location API: TomTom Maps API
+
+
+▶️ How to Run
+
+-> Run with Live Server
+
+Install Live Server extension in VS Code.
+
+Right-click index.html → Open with Live Server.
+
+The app will open in your browser.
