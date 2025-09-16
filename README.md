@@ -1,7 +1,24 @@
+🚗 VoltSeekers – EV Charging Station Finder
 
-# EV Charging Station Locator
+VoltSeekers is a frontend-only web application built using HTML, CSS, JavaScript, and the TomTom Maps API.
+It helps users find nearby EV charging stations on an interactive map.
 
-### Introduction
+⚡ No backend – The app runs directly in the browser with API calls handled via JavaScript.
 
-Welcome to the "EV Charging Station Locator" project! This project aims to provide a web application that helps users locate electric vehicle (EV) charging stations in their vicinity using TomTom Maps API.
+✨ Features
 
+🔍 Search EV charging stations on the map.
+
+📍 Live location detection & nearby results.
+
+🗺️ Interactive TomTom map with zoom & markers.
+
+🎨 Responsive UI built with HTML, CSS, JavaScript.
+
+🚀 Runs directly using Live Server (no backend required).
+
+🛠️ Tech Stack
+
+Frontend: HTML, CSS, JavaScript
+
+Maps & Location API: TomTom Maps API
